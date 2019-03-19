@@ -35,7 +35,12 @@ input:focus {
   border: none;
 }
 
-.hero, .count-down, .count-down__hours, .count-down__minutes, .count-down__seconds {
+.count-down, .control-grid {
+  width: 100%;
+  max-width: 600px;
+}
+
+.hero, .hero--text, main, .count-down, .count-down__hours, .count-down__minutes, .count-down__seconds {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -48,6 +53,7 @@ input:focus {
 }
 
 .page-container {
+  margin: 0 auto;
   height: 100%;
   width: 100%;
   max-width: 1200px;
@@ -101,20 +107,10 @@ input:focus {
   background: transparent !important;
 }
 
-.btn::before {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  content: '';
-  border-radius: 5rem;
-  background: pink;
-  opacity: 0;
-}
-
 .hero {
+  width: 100%;
   height: 30vh;
+  max-height: 250px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -122,8 +118,13 @@ input:focus {
 }
 
 .hero--text {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 85%;
+  width: 100%;
   position: relative;
-  padding: 4rem 16rem;
   text-align: center;
   background: rgba(0, 0, 0, 0.3);
 }
@@ -135,6 +136,21 @@ input:focus {
 
 .hero--text__sub {
   font-size: 2rem;
+  color: white;
+}
+
+main {
+  margin: 0 auto;
+  height: 70vh;
+  max-height: 600px;
+  width: 100%;
+  max-width: 900px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .count-down {
@@ -149,15 +165,6 @@ input:focus {
   height: 10rem;
   width: 10rem;
   margin: 1rem;
-}
-
-.count-down__hours::before, .count-down__minutes::before, .count-down__seconds::before {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  content: '';
 }
 
 .count-down__hours::after, .count-down__minutes::after, .count-down__seconds::after {
@@ -179,15 +186,15 @@ input:focus {
 .control-grid {
   display: -ms-grid;
   display: grid;
-  grid-row-gap: 1rem;
+  grid-row-gap: 2rem;
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
   -ms-grid-rows: (1fr)[3];
       grid-template-rows: repeat(3, 1fr);
       grid-template-areas: "tbox in-tbox in-tbox start" "short in-short in-short stop" "long in-long in-long reset";
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .control-grid .btn {
@@ -199,11 +206,14 @@ input:focus {
 
 .control-grid label {
   display: block;
+  color: white;
 }
 
 .control-grid input {
   width: 100%;
   padding: 1rem 0;
+  font-size: 2.3rem;
+  color: white;
   background: transparent;
   border-bottom: 0.1rem solid #ab66e7;
 }
@@ -268,47 +278,25 @@ input:focus {
   grid-area: reset;
 }
 
-@-webkit-keyframes animateParallel {
-  from {
-    -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-  }
-  to {
-    -webkit-clip-path: polygon(0% 0%, 75% 0%, 100% 100%, 25% 100%);
-            clip-path: polygon(0% 0%, 75% 0%, 100% 100%, 25% 100%);
-  }
-}
-
-@keyframes animateParallel {
-  from {
-    -webkit-clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-            clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
-  }
-  to {
-    -webkit-clip-path: polygon(0% 0%, 75% 0%, 100% 100%, 25% 100%);
-            clip-path: polygon(0% 0%, 75% 0%, 100% 100%, 25% 100%);
-  }
-}
-
 @-webkit-keyframes scale-down-up {
   from {
-    -webkit-transform: scale(0.9) rotate(45deg);
-            transform: scale(0.9) rotate(45deg);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
   }
   to {
-    -webkit-transform: scale(1.2) rotate(45deg);
-            transform: scale(1.2) rotate(45deg);
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
   }
 }
 
 @keyframes scale-down-up {
   from {
-    -webkit-transform: scale(0.9) rotate(45deg);
-            transform: scale(0.9) rotate(45deg);
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
   }
   to {
-    -webkit-transform: scale(1.2) rotate(45deg);
-            transform: scale(1.2) rotate(45deg);
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
   }
 }
 /*# sourceMappingURL=main.css.map */
