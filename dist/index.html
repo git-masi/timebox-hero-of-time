@@ -10,15 +10,16 @@
 <body>
   <div class="page-container">
     <header>
+      <!-- Hero section -->
       <section class="hero">
         <div class="hero--text">
           <h1 class="hero--text__main">Hero of Time</h1>
           <p class="hero--text__sub">Think inside the timebox</p>
         </div>
-        <!-- <a href="#a" class="btn hero--btn"></a> -->
       </section>
       
     </header>
+
     <main>
       <!-- Time Display -->
       <div class="count-down">
@@ -29,10 +30,12 @@
 
       <!-- Controls -->
       <div class="control-grid">
+        <!-- Timebox Buttons -->
         <button id="timebox-button" class="btn">timebox</button>
         <button id="short-break-button" class="btn">short break</button>
         <button id="long-break-button" class="btn">long break</button>
         
+        <!-- Input length of time -->
         <div class="timebox-group">
           <label for="timebox-input">Timebox</label>
           <input type="number" name="timebox-input" id="timebox-input" min="10" max="120">
@@ -46,10 +49,10 @@
           <input type="number" name="long-break-input" id="long-break-input" min="10" max="120">
         </div>
         
+        <!-- Start, stop, pause timebox -->
         <button id="start-button" class="btn btn__green">start</button>
         <button id="stop-button" class="btn btn__red">stop</button>
         <button id="reset-button" class="btn btn__yellow">reset</button>
-
       </div>
     </main>
   </div>
