@@ -42,8 +42,10 @@ function setDisplay(hrs = 0, mins = 0, secs = 0) {
 
   interval = (Number(hrs) * 3.6e+6) + (Number(mins) * 60000) + (Number(secs) * 1000);
 
+  startAnimation();
+
   // Run displayMe() one time without delay, then run every 1s afterwards
-  displayMe();
+  // displayMe();
   const timer = setInterval(displayMe, 1000);
 
   function displayMe() {
@@ -65,6 +67,7 @@ function setDisplay(hrs = 0, mins = 0, secs = 0) {
   stopBtn.addEventListener('click', () => {
     clearInterval(timer);
     running = false;
+    stopAnimation();
   });
   
   resetBtn.addEventListener('click', () => {
@@ -73,5 +76,14 @@ function setDisplay(hrs = 0, mins = 0, secs = 0) {
     displayMinutes.textContent = '00';
     displaySeconds.textContent = '00';
     running = false;
+    stopAnimation();
   });
+}
+
+function startAnimation() {
+  document.getElementById('toggler').checked = true;
+}
+
+function stopAnimation() {
+  document.getElementById('toggler').checked = null;
 }

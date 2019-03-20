@@ -184,8 +184,8 @@ main {
   border-radius: 50%;
   -webkit-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
-  -webkit-animation: scale-down-up 1s ease infinite alternate;
-          animation: scale-down-up 1s ease infinite alternate;
+  -webkit-animation: scale-down-up 1s ease infinite alternate paused;
+          animation: scale-down-up 1s ease infinite alternate paused;
 }
 
 .control-grid {
@@ -281,6 +281,19 @@ main {
   -ms-grid-row: 3;
   -ms-grid-column: 4;
   grid-area: reset;
+}
+
+#toggler {
+  display: none;
+}
+
+#toggler:checked ~ .count-down__hours::after,
+#toggler:checked ~ .count-down__minutes::after,
+#toggler:checked ~ .count-down__seconds::after {
+  -webkit-animation-name: scale-down-up;
+          animation-name: scale-down-up;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
 }
 
 @-webkit-keyframes scale-down-up {
