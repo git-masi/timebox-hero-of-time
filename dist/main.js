@@ -42,20 +42,23 @@ function setDisplay(hrs = 0, mins = 0, secs = 0) {
 
   interval = (Number(hrs) * 3.6e+6) + (Number(mins) * 60000) + (Number(secs) * 1000);
 
+  // Run displayMe() one time without delay, then run every 1s afterwards
+  displayMe();
   const timer = setInterval(displayMe, 1000);
 
   function displayMe() {
     let hours = Math.floor(interval / 3.6e+6);
-    let minutes = Math.ceil((interval % 3.6e+6) / 60000);
+    let minutes = Math.floor((interval % 3.6e+6) / 60000);
     let seconds = ((interval % 3.6e+6) % 60000) / 1000;
     
     if(interval >= 0) {
       interval -= 1000;
       displayHours.textContent = hours.toString().padStart(2, '0');
-      minutes > 1 ? displayMinutes.textContent = (minutes - 1).toString().padStart(2, '0') : displayMinutes.textContent = '00';
+      displayMinutes.textContent = minutes.toString().padStart(2, '0');
       displaySeconds.textContent = seconds.toString().padStart(2, '0');
     } else {
       clearInterval(timer);
+      running = false;
     }
   }
 
