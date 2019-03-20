@@ -8,17 +8,41 @@ const timeBoxBtn = document.getElementById('timebox-button'),
       displayMinutes = document.querySelector('.count-down__minutes'),
       displaySeconds = document.querySelector('.count-down__seconds');
 
+let running = false;
+
 timeBoxBtn.addEventListener('click', () => {
+  if(running) return;
   let inputMins = document.getElementById('timebox-input').value;
   setDisplay(0, inputMins, 0);
 });
 
+shortBreakBtn.addEventListener('click', () => {
+  if(running) return;
+  let inputMins = document.getElementById('short-break-input').value;
+  setDisplay(0, inputMins, 0);
+});
+
+longBreakBtn.addEventListener('click', () => {
+  if(running) return;
+  let inputMins = document.getElementById('long-break-input').value;
+  setDisplay(0, inputMins, 0);
+});
+
+startBtn.addEventListener('click', () => {
+  if(running) return;
+  if(displayHours.textContent === '00' && displayMinutes.textContent === '00' && displaySeconds.textContent === '00') timeBoxBtn.click();
+  setDisplay(displayHours.textContent, displayMinutes.textContent, displaySeconds.textContent);
+});
+
 function setDisplay(hrs = 0, mins = 0, secs = 0) {
-  interval = (hrs * 3.6e+6) + (mins * 60000) + (secs * 1000);
+  // implement more robust checking using html .checkValidity
+  if(hrs <= 0 && mins <= 0 && secs <= 0) return;
 
-  if(interval === 0) return;
+  running = true;
 
-  const timer = setInterval(displayMe, 100);
+  interval = (Number(hrs) * 3.6e+6) + (Number(mins) * 60000) + (Number(secs) * 1000);
+
+  const timer = setInterval(displayMe, 1000);
 
   function displayMe() {
     let hours = Math.floor(interval / 3.6e+6);
@@ -37,10 +61,14 @@ function setDisplay(hrs = 0, mins = 0, secs = 0) {
 
   stopBtn.addEventListener('click', () => {
     clearInterval(timer);
+    running = false;
+  });
+  
+  resetBtn.addEventListener('click', () => {
+    clearInterval(timer);
+    displayHours.textContent = '00';
+    displayMinutes.textContent = '00';
+    displaySeconds.textContent = '00';
+    running = false;
   });
 }
-
-
-startBtn.addEventListener('click', () => {
-  setDisplay(Number(displayHours.textContent), Number(displayMinutes.textContent), Number(displaySeconds.textContent));
-});
