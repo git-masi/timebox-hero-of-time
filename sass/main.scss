@@ -15,7 +15,7 @@ html, body {
 }
 
 body {
-  background: url('../assets/nasa-galaxy.jpg') no-repeat center center/cover;
+  background: url('../assets/nasa-galaxy-extra-large.jpg') no-repeat center center/cover;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.6rem;
   line-height: 1.4;
@@ -133,8 +133,8 @@ header {
     height: 85%;
     width: 100%;
     position: relative;
-    // padding: 4rem 16rem;
     text-align: center;
+    text-transform: capitalize;
     background: rgba(0, 0, 0, .3);
 
     &__main {
