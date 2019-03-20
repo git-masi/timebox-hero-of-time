@@ -9,20 +9,20 @@ timeBoxButton.addEventListener('click', ()=>{
   setInterval(()=>{
     let hours = Math.floor(interval / 3.6e+6).toString().padStart(2, '0');
     let minutes = (Math.ceil((interval % 3.6e+6) / 60000));
-    let seconds = (((interval % 3.6e+6) % 60000) / 1000).toString().padStart(2, '0');
+    let seconds = (((interval % 3.6e+6) % 60000) / 1000);
 
-    console.log(interval);
+    console.log(seconds);
     
-    if(interval > 0) {
+    if(interval >= 0) {
       interval -= 1000;
       displayHours.textContent = hours;
-      minutes > 0 ? displayMinutes.textContent = (minutes - 1).toString().padStart(2, '0') : displayMinutes.textContent = '00';
-      seconds > 0 ? displaySeconds.textContent = (seconds - 1).toString().padStart(2, '0') : displaySeconds.textContent = '00';
+      minutes > 1 ? displayMinutes.textContent = (minutes - 1).toString().padStart(2, '0') : displayMinutes.textContent = '00';
+      displaySeconds.textContent = seconds.toString().padStart(2, '0');
     } else {
       clearInterval(1);
     }
     // change the interval to 1000 when done testing
-  }, 1000);
+  }, 100);
 });
 
 stopButton.addEventListener('click', ()=>{
