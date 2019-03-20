@@ -116,6 +116,10 @@ input:focus {
 //    HEADER
 // ============
 
+header {
+  width: 100%;
+}
+
 .hero {
   width: 100%;
   height: 30vh;
@@ -183,8 +187,8 @@ main {
 
     &::after {
       position: absolute;
-      bottom: 0;
-      left: 0;
+      bottom: -4%;
+      left: -1%;
       width: 100%;
       height: 100%;
       content: '';
@@ -283,16 +287,4 @@ main {
   }
 }
 
-@media screen and (max-width: 800px) {
-  .count-down {
-
-    &__hours,
-    &__minutes,
-    &__seconds {
-
-      &::after {
-        animation-play-state: paused;
-      }
-    }
-  }
-}
+@import 'mobile';

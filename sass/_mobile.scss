@@ -1,0 +1,63 @@
+@media screen and (max-width: 800px) {
+  .page-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .count-down {
+    font-size: 4rem;
+
+    &__hours,
+    &__minutes,
+    &__seconds {
+      height: 7rem;
+      width: 7rem;
+
+      &::after {
+        animation-play-state: paused;
+      }
+    }
+  }
+
+  .control-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+      "tbox short long"
+      "in-tbox in-short in-long"
+      "start stop reset";
+
+      & .btn {
+        // width: auto;
+        // height: auto;
+        padding: .7rem 1rem;
+        font-size: 1.6rem;
+        // line-height: 0;
+      }
+
+      #short-break-button {
+        content: 'Short'
+      }
+
+      & label {
+        text-align: center;
+      }
+      
+      & input {
+        text-align: center;
+      }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .control-grid {
+    .btn {
+      width: auto;
+      height: auto;
+    }
+  }
+}
