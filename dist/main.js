@@ -1,30 +1,39 @@
-const timeBoxButton = document.getElementById('timebox-button'),
-      stopButton = document.getElementById('stop-button'),
+const timeBoxBtn = document.getElementById('timebox-button'),
+      shortBreakBtn = document.getElementById('short-break-button'),
+      longBreakBtn = document.getElementById('long-break-button'),
+      stopBtn = document.getElementById('stop-button'),
+      startBtn = document.getElementById('start-button'),
+      resetBtn = document.getElementById('reset-button'),
       displayHours = document.querySelector('.count-down__hours'),
       displayMinutes = document.querySelector('.count-down__minutes'),
       displaySeconds = document.querySelector('.count-down__seconds');
 
-timeBoxButton.addEventListener('click', ()=>{
-  let interval = document.getElementById('timebox-input').value * 60000;
-  setInterval(()=>{
-    let hours = Math.floor(interval / 3.6e+6).toString().padStart(2, '0');
-    let minutes = (Math.ceil((interval % 3.6e+6) / 60000));
-    let seconds = (((interval % 3.6e+6) % 60000) / 1000);
+timeBoxBtn.addEventListener('click', () => {
+  let inputMins = document.getElementById('timebox-input').value;
+  setDisplay(0, inputMins, 0);
+});
 
-    console.log(seconds);
+function setDisplay(hrs = 0, mins = 0, secs = 0) {
+  interval = (hrs * 3.6e+6) + (mins * 60000) + (secs * 1000);
+
+  const test = setInterval(displayMe, 100);
+  
+  function displayMe() {
+    let hours = Math.floor(interval / 3.6e+6);
+    let minutes = Math.ceil((interval % 3.6e+6) / 60000);
+    let seconds = ((interval % 3.6e+6) % 60000) / 1000;
     
     if(interval >= 0) {
       interval -= 1000;
-      displayHours.textContent = hours;
+      displayHours.textContent = hours.toString().padStart(2, '0');
       minutes > 1 ? displayMinutes.textContent = (minutes - 1).toString().padStart(2, '0') : displayMinutes.textContent = '00';
       displaySeconds.textContent = seconds.toString().padStart(2, '0');
     } else {
-      clearInterval(1);
+      clearInterval(test);
     }
-    // change the interval to 1000 when done testing
-  }, 100);
-});
+  }
+}
 
-stopButton.addEventListener('click', ()=>{
+stopBtn.addEventListener('click', ()=>{
   clearInterval(1);
 });
