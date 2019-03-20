@@ -16,8 +16,10 @@ timeBoxBtn.addEventListener('click', () => {
 function setDisplay(hrs = 0, mins = 0, secs = 0) {
   interval = (hrs * 3.6e+6) + (mins * 60000) + (secs * 1000);
 
-  const test = setInterval(displayMe, 100);
-  
+  if(interval === 0) return;
+
+  const timer = setInterval(displayMe, 100);
+
   function displayMe() {
     let hours = Math.floor(interval / 3.6e+6);
     let minutes = Math.ceil((interval % 3.6e+6) / 60000);
@@ -29,11 +31,16 @@ function setDisplay(hrs = 0, mins = 0, secs = 0) {
       minutes > 1 ? displayMinutes.textContent = (minutes - 1).toString().padStart(2, '0') : displayMinutes.textContent = '00';
       displaySeconds.textContent = seconds.toString().padStart(2, '0');
     } else {
-      clearInterval(test);
+      clearInterval(timer);
     }
   }
+
+  stopBtn.addEventListener('click', () => {
+    clearInterval(timer);
+  });
 }
 
-stopBtn.addEventListener('click', ()=>{
-  clearInterval(1);
+
+startBtn.addEventListener('click', () => {
+  setDisplay(Number(displayHours.textContent), Number(displayMinutes.textContent), Number(displaySeconds.textContent));
 });
