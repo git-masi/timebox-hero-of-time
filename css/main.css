@@ -299,4 +299,11 @@ main {
             transform: scale(1.2);
   }
 }
+
+@media screen and (max-width: 800px) {
+  .count-down__hours::after, .count-down__minutes::after, .count-down__seconds::after {
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+  }
+}
 /*# sourceMappingURL=main.css.map */

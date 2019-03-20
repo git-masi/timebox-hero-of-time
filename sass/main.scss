@@ -282,3 +282,17 @@ main {
     transform: scale(1.2);
   }
 }
+
+@media screen and (max-width: 800px) {
+  .count-down {
+
+    &__hours,
+    &__minutes,
+    &__seconds {
+
+      &::after {
+        animation-play-state: paused;
+      }
+    }
+  }
+}
